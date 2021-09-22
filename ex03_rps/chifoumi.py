@@ -21,8 +21,6 @@ def check_validity(user_pick, bot_pick):
 
     return winner
 
-
-
 def play():
 
     print("Here are the picks : \n -- Rock -- \n -- Paper -- \n -- Cissors --\n")
@@ -41,10 +39,20 @@ def play():
 
     else:
         while user_pick != "Rock" or user_pick != "Paper" or user_pick != "Cissors":
-            user_pick = input("Bad ! Try a another pick !\n")
+            user_pick = input("Bad input ! Try a another pick !\n")
+            if(user_pick == "Rock" or user_pick == "Paper" or user_pick == "Cissors"):
+                break
+
+        bot_pick = generate_bot_pick()
+        winner = check_validity(user_pick, bot_pick)
+
+        while winner == None:
+            user_pick = input("Draw ! Try a another pick !\n")
             if(user_pick == "Rock" or user_pick == "Paper" or user_pick == "Cissors"):
                 bot_pick = generate_bot_pick()
                 winner = check_validity(user_pick, bot_pick)
+
+
 
 if __name__ == "__main__":
 
